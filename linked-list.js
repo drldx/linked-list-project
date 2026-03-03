@@ -29,9 +29,9 @@ class LinkedList {
 
   size() {
     if (this.head === null) return 0;
-    let count = 1;
+    let count = 0;
     let tmp = this.head;
-    while (tmp.nextNode !== null) {
+    while (tmp !== null) {
       count++;
       tmp = tmp.nextNode;
     }
@@ -70,7 +70,7 @@ class LinkedList {
 
   contains(value) {
     let tmp = this.head;
-    while (tmp.nextNode !== null) {
+    while (tmp !== null) {
       if (tmp.value === value) return true;
       tmp = tmp.nextNode;
     }
