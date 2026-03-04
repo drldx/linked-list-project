@@ -123,6 +123,24 @@ class LinkedList {
     }
   }
 
-}
+  removeAt(index) {
+    let tmp = this.head;
+    if (index < 0) return;
 
+    if (index === 0) {
+      this.head = this.head.nextNode;
+      return;
+    }
+
+    let prevNode;
+    for (let i = 0; i < index; i++) {
+      if (tmp.nextNode === null) throw new RangeError('Index out of bounds');
+      if (i === index - 1) prevNode = tmp;
+      tmp = tmp.nextNode;
+    }
+
+    prevNode.nextNode = tmp.nextNode;
+  }
+
+}
 
