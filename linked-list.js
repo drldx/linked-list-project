@@ -26,7 +26,6 @@ class LinkedList {
     }
   }
 
-
   size() {
     if (this.head === null) return 0;
     let count = 0;
@@ -100,6 +99,30 @@ class LinkedList {
     resArr.push('null');
     return resArr.join(" -> ");
   }
+
+  insertAt(index, ...values) {
+    let tmp = this.head;
+
+    if (index < 0) return;
+    if (index === 0) {
+      for (let i = values.length - 1; i >= 0; i--) {
+        this.prepend(values[i])
+      }
+      return;
+    }
+
+    for (let i = 0; i < index - 1; i++) {
+      if (tmp.nextNode === null) {
+        throw new RangeError('Index out of bounds');
+      }
+      tmp = tmp.nextNode;
+    }
+
+    for (let i = values.length - 1; i >= 0; i--) {
+      tmp.nextNode = new Node(values[i], tmp.nextNode);
+    }
+  }
+
 }
 
 
